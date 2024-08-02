@@ -1,5 +1,11 @@
-# Ignorar el archivo de variables de entorno y otros
+# Ignorar el archivo de variables de entorno
 .env
+
+# Ignorar archivos específicos de pruebas
 test_and_models/test_models.py
 test_and_models/list_models.py
 test_and_models/chatgpt_test.py
+
+# Ignorar archivos temporales
+*.pyc
+__pycache__/
