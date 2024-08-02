@@ -16,6 +16,12 @@ TOKEN = os.getenv('TELEGRAM_TOKEN')
 # Reemplaza 'TU_API_KEY_OPENAI' con tu clave API de OpenAI
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
+# Configuración de la base de datos
+DB_HOST = os.getenv('DB_HOST')
+DB_DATABASE = os.getenv('DB_DATABASE')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+
 # Configuración de logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -37,10 +43,10 @@ def chatgpt_response(prompt: str) -> str:
 def create_connection():
     try:
         connection = mysql.connector.connect(
-            host='localhost',           # Cambia esto si tu base de datos no está en la misma máquina
-            database='mydatabase',
-            user='root',                # Tu usuario de MySQL
-            password=os.getenv('DB_PASSWORD')  # Usa la contraseña del archivo .env
+            host=DB_HOST,           # Usa la variable de entorno para el host de la base de datos
+            database=DB_DATABASE,   # Usa la variable de entorno para el nombre de la base de datos
+            user=DB_USER,           # Usa la variable de entorno para el usuario de MySQL
+            password=DB_PASSWORD    # Usa la variable de entorno para la contraseña de MySQL
         )
         if connection.is_connected():
             print('Conexión exitosa a la base de datos')
