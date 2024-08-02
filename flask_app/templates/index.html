@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes de la Base de Datos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px 0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 50px; /* Aumenta la distancia entre el título y los botones */
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px; /* Aumenta la distancia entre los botones y la tabla */
+        }
+        .filter-form {
+            display: flex;
+            gap: 10px;
+        }
+        .filter-form input[type="date"], 
+        .filter-form input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+        }
+        .filter-form button {
+            padding: 8px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        mark {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .message {
+            color: #d9534f; /* Red color for error messages */
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .filters {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .filter-form {
+                width: 100%;
+                flex-direction: column;
+            }
+            .filter-form button {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mensajes de la Base de Datos</h1>
+        <div class="filters">
+            <div class="filter-form">
+                <form action="/" method="get">
+                    <input type="date" name="start_date" value="{{ start_date or '' }}" placeholder="Fecha de inicio">
+                    <input type="date" name="end_date" value="{{ end_date or '' }}" placeholder="Fecha de fin">
+                    <button type="submit">Filtrar por Fecha</button>
+                </form>
+            </div>
+            <div class="filter-form">
+                <form action="/" method="get">
+                    <input type="text" name="search" placeholder="Buscar..." value="{{ search_query or '' }}">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        {% if message %}
+            <div class="message">{{ message }}</div>
+        {% endif %}
+
+        {% if data %}
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Mensaje del Usuario</th>
+                    <th>Respuesta del Bot</th>
+                    <th>Timestamp</th>
+                </tr>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row['id'] }}</td>
+                    <td>{{ row['user_message']|safe }}</td>
+                    <td>{{ row['bot_response']|safe }}</td>
+                    <td>{{ row['timestamp'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>

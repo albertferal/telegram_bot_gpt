@@ -1,0 +1,5 @@
+# Ignorar el archivo de variables de entorno y otros
+.env
+test_and_models/test_models.py
+test_and_models/list_models.py
+test_and_models/chatgpt_test.py
