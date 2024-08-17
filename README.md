@@ -52,8 +52,8 @@ OPENAI_API_KEY=your_openai_api_key_here
 #### Variables para la base de datos
 ```
 DB_HOST=localhost
-DB_DATABASE=mydatabase
-DB_USER=root
+DB_DATABASE=your_database_name
+DB_USER=your_database_user
 DB_PASSWORD=your_mysql_password_here
 ```
 #### Variables para la autenticación básica en la aplicación Flask
