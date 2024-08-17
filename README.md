@@ -36,7 +36,7 @@ El bot de Telegram y la aplicación Flask requieren las siguientes bibliotecas:
 Puedes instalar las dependencias necesarias con:
 
 ```
-pip install python-telegram-bot openai mysql-connector-python python-dotenv Flask markupsafe
+pip install -r requirements.txt
 ```
 
 
@@ -58,8 +58,8 @@ DB_PASSWORD=your_mysql_password_here
 ```
 #### Variables para la autenticación básica en la aplicación Flask
 ```
-AUTH_USER=AlbertAdmin
-AUTH_PASSWORD=Peluchy97
+AUTH_USER=your_user_here
+AUTH_PASSWORD=your_password_here
 ```
 
 Reemplaza todos los valores con tus propias credenciales.
@@ -84,3 +84,12 @@ python flask_app/app.py
 2. Abre tu navegador web y visita http://localhost:5000.
 
 3. Inicia sesión con las credenciales especificadas en el archivo .env.
+
+### Documentación de referencia:
+- Telegram bots: https://core.telegram.org/bots/api
+- OpenAI APIS: https://openai.com/index/openai-api/
+- Python: https://docs.python.org/3/
+- MySQL: https://dev.mysql.com/doc/
+
+
+#### || Autor: Albert Fernández || Web personal: https://aferal.es ||
